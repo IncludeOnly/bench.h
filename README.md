@@ -1,23 +1,35 @@
-# library.h
+# bench.h
 
 ## Get started
 
 ```bash
-wget https://raw.githubusercontent.com/IncludeOnly/<library>.h/refs/heads/main/<library>.h
+wget https://raw.githubusercontent.com/IncludeOnly/bench.h/refs/heads/main/bench.h
 ```
 
 ## Example
 
 ```c
-<example code>
+#define BENCH_IMPLEMENTATION
+#include <io/bench.h>
+
+int func(){ ... }
+
+int main(){
+    BENCH_START();
+        func();
+    BENCH_END();
+    BENCH_LOG();
+
+    return 0;
+}
 ```
 
 ## If you really need to link
 
 ```bash
-mv <library>.h <library>.c
-cc -o lib<library>.so <library>.c -fPIC -D<LIBRARY>_IMPLEMENTATION -shared
-mv <library>.c <library>.h
+mv bench.h bench.c
+cc -o libbench.so bench.c -fPIC -DBENCH_IMPLEMENTATION -shared
+mv bench.c bench.h
 ```
 
 ## License
